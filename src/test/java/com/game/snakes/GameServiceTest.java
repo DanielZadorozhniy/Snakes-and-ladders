@@ -35,5 +35,13 @@ public class GameServiceTest {
         assertEquals(99, gameStatusDto.getCurrentPosition());
     }
 
+    @Test
+    public void movePosition() {
+        gameService = new GameService(new Player(10), dice);
+        when(dice.roll()).thenReturn(5);
+        final GameStatusDto gameStatusDto = gameService.play();
+        assertEquals("MOVED", gameStatusDto.getStatus());
+        assertEquals(15, gameStatusDto.getCurrentPosition());
+    }
 
 }
