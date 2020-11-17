@@ -18,6 +18,12 @@ public class GameService {
     }
 
     public GameStatusDto play() {
+        int diceResult = dice.roll();
+        if (player.getPosition() + diceResult == FINAL_STEP) {
+            player.setPosition(0);
+            return new GameStatusDto(player.getPosition(), diceResult,"WON");
+        }
+
         return null;
     }
 }
