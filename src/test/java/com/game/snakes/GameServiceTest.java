@@ -26,5 +26,14 @@ public class GameServiceTest {
         assertEquals(0, gameStatusDto.getCurrentPosition());
     }
 
+    @Test
+    public void skipIfNextStepIsBiggerThanFinal() {
+        gameService = new GameService(new Player(99), dice);
+        when(dice.roll()).thenReturn(2);
+        final GameStatusDto gameStatusDto = gameService.play();
+        assertEquals("SKIPPED", gameStatusDto.getStatus());
+        assertEquals(99, gameStatusDto.getCurrentPosition());
+    }
+
 
 }
