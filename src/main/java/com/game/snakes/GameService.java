@@ -24,6 +24,10 @@ public class GameService {
             return new GameStatusDto(player.getPosition(), diceResult,"WON");
         }
 
+        if (player.getPosition() + diceResult > FINAL_STEP) {
+            return new GameStatusDto(player.getPosition(), diceResult,"SKIPPED");
+        }
+
         return null;
     }
 }
