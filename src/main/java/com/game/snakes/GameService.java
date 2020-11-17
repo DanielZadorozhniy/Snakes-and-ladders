@@ -28,6 +28,7 @@ public class GameService {
             return new GameStatusDto(player.getPosition(), diceResult,"SKIPPED");
         }
 
-        return null;
+        player.addToPosition(diceResult);
+        return new GameStatusDto(player.getPosition(), diceResult,"MOVED");
     }
 }
